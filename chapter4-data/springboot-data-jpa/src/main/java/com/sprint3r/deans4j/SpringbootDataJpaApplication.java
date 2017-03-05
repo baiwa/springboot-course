@@ -10,11 +10,13 @@ public class SpringbootDataJpaApplication {
 
 	@Bean
 	public InitializingBean seedDatabase(ProductRepository repository) {
+		System.out.println("initial DB");
 		return () -> {
 			repository.save(new Product("Intel i7", "CPU", "i7 7700k"));
 			repository.save(new Product("AMD Raizen 1700X", "CPU", "AMD 1700X"));
 			repository.save(new Product("Galax HOF GTX1080", "GPU", "GTX 1080"));
 			repository.save(new Product("Raiden Plasma","RAM", "DDR4 32GB"));
+			repository.save(new Product("Nissan GTR","Engine", "V6"));
 		};
 	}
 

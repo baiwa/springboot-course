@@ -22,12 +22,17 @@ public class ProductController {
 
     @GetMapping("/cpu")
     Iterable<Product> cpu() {
-        return jdbcTemplate.query("select * from Product p WHERE p.type = 'CPU'", (rs, rowNum) ->
-                new Product(
-                        rs.getLong("id"),
-                        rs.getString("name"),
-                        rs.getString("type"),
-                        rs.getString("description"))
-                );
+    	Iterable<Product> list = jdbcTemplate.query("select * from Product p WHERE p.type = 'CPU'", 
+    			
+    			(rs, rowNum) ->
+		        
+		    	new Product(
+		                rs.getLong("id"),
+		                rs.getString("name"),
+		                rs.getString("type"),
+		                rs.getString("description"))
+        ); 
+    	
+        return list;
     }
 }
